@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.WindowManager;
@@ -82,6 +83,14 @@ public class DialogService extends Service {
 				SettingsFragment.FILENAME, Context.MODE_PRIVATE);
 		final String mode = sp.getString(getString(R.string.pref_key_mode),
 				getString(R.string.pref_def_mode));
+
+		// Don't play music if calling
+		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		int state = tm.getCallState();
+		if (state != TelephonyManager.CALL_STATE_IDLE) {
+			Log.d(TAG, "Phone was calling, not starting music / showing dialog");
+			return;
+		}
 		if (mode.equals(getString(R.string.pref_val_mode_directly))) {
 			Log.d(TAG, "a");
 			startExternalPlayer();
