@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AutoMusic</string>
+    <string name="action_settings">Settings</string>
+    <string name="start_service">Start Service</string>
+    <string name="stop_service">Stop Service</string>
+    <string name="plugin_dlg_tit">Jack plugged in!</string>
+    <string name="plugin_dlg_msg">Start playing music?</string>
+
+    <!-- Start at boot -->
+    <string name="pref_key_start_boot">com.twinone.autoplay.pref.start_boot</string>
+    <string name="pref_tit_start_boot">Start at boot</string>
+    <string name="pref_desc_start_at_boot_on">App will start when the device boots</string>
+    <string name="pref_desc_start_at_boot_off">App will not start automatically. You will have to enable it manually on each boot</string>
+
+    <bool name="pref_def_start_boot">true</bool>
+
+    <!-- Mode -->
+    <string name="pref_key_mode">com.twinone.autoplay.pref.mode</string>
+    <string name="pref_tit_mode">Mode</string>
+    <string name="pref_desc_mode">Customize the behaviour of the app</string>
+    <string name="pref_val_mode_directly">com.twinone.ay.pref.val.directly</string>
+    <string name="pref_val_mode_ask">com.twinone.autoplay.pref.val.ask</string>
+
+    <item name="pref_def_mode" format="reference" type="string">@string/pref_val_mode_ask</item>
+
+    <string-array name="pref_names_mode">
+        <item>Play directly</item>
+        <item>Ask first</item>
+    </string-array>
+    <string-array name="pref_values_mode">
+        <item>@string/pref_val_mode_directly</item>
+        <item>@string/pref_val_mode_ask</item>
+    </string-array>
+
+</resources>
