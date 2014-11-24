@@ -15,6 +15,8 @@
  */
 package com.twinone.autoplay;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -61,6 +63,19 @@ public class DialogService extends Service {
 		}
 	}
 
+	public static boolean isRunning(Context c) {
+		ActivityManager manager = (ActivityManager) c
+				.getSystemService(Context.ACTIVITY_SERVICE);
+		for (RunningServiceInfo service : manager
+				.getRunningServices(Integer.MAX_VALUE)) {
+			if (DialogService.class.getName().equals(
+					service.service.getClassName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -92,10 +107,8 @@ public class DialogService extends Service {
 			return;
 		}
 		if (mode.equals(getString(R.string.pref_val_mode_directly))) {
-			Log.d(TAG, "a");
 			startExternalPlayer();
 		} else {
-			Log.d(TAG, "b");
 			showDialog();
 		}
 
@@ -160,7 +173,7 @@ public class DialogService extends Service {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		Log.d(TAG, "onDestroy");
+		Log.w(TAG, "onDestroy");
 		unregisterReceiver(mReceiver);
 	}
 }

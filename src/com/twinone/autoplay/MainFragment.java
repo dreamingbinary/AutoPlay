@@ -15,22 +15,21 @@
  */
 package com.twinone.autoplay;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningServiceInfo;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.Switch;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainFragment extends Fragment implements View.OnClickListener {
+public class MainFragment extends Fragment implements OnClickListener {
 
-	private Button bToggleService;
+	private Switch mSwitch;
 
 	public MainFragment() {
 	}
@@ -39,17 +38,17 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_main, container, false);
-		bToggleService = (Button) root.findViewById(R.id.bToggleService);
-		bToggleService.setOnClickListener(this);
+		mSwitch = (Switch) root.findViewById(R.id.swToggleService);
+		mSwitch.setOnClickListener(this);
+		updateLayout();
 		return root;
 	}
 
 	@Override
-	public void onClick(View v) {
-		if (v.getId() == R.id.bToggleService) {
-			toggleService();
-		}
+	public void onClick(View arg0) {
+		toggleService();
 	}
+	
 
 	@Override
 	public void onResume() {
@@ -66,23 +65,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 	}
 
 	private void updateLayout() {
-		if (isServiceRunning()) {
-			bToggleService.setText(R.string.stop_service);
+		boolean running = isServiceRunning();
+		if (running) {
+			mSwitch.setText(R.string.stop_service);
 		} else {
-			bToggleService.setText(R.string.start_service);
+			mSwitch.setText(R.string.start_service);
 		}
+		mSwitch.setChecked(running);
 	}
 
 	private boolean isServiceRunning() {
-		ActivityManager manager = (ActivityManager) getActivity()
-				.getSystemService(Context.ACTIVITY_SERVICE);
-		for (RunningServiceInfo service : manager
-				.getRunningServices(Integer.MAX_VALUE)) {
-			if (DialogService.class.getName().equals(
-					service.service.getClassName())) {
-				return true;
-			}
-		}
-		return false;
+		return DialogService.isRunning(getActivity());
 	}
 }
