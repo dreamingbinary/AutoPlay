@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <SwitchPreference
+        android:defaultValue="@bool/pref_def_start_boot"
+        android:key="@string/pref_key_start_boot"
+        android:summaryOff="@string/pref_desc_start_at_boot_off"
+        android:summaryOn="@string/pref_desc_start_at_boot_on"
+        android:title="@string/pref_tit_start_boot" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_def_mode"
+        android:entries="@array/pref_names_mode"
+        android:entryValues="@array/pref_values_mode"
+        android:key="@string/pref_key_mode"
+        android:summary="@string/pref_desc_mode"
+        android:title="@string/pref_tit_mode" />
+
+</PreferenceScreen><!-- From: file:/home/twinone/dev/android/projects/AutoPlay/app/src/main/res/xml/prefs.xml -->
