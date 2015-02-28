@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
         android:defaultValue="@bool/pref_def_start_boot"
@@ -15,5 +15,9 @@
         android:key="@string/pref_key_mode"
         android:summary="@string/pref_desc_mode"
         android:title="@string/pref_tit_mode" />
+
+    <Preference
+        android:key="@string/pref_key_more_from_dev"
+        android:title="@string/more_from_dev_tit" />
 
 </PreferenceScreen>

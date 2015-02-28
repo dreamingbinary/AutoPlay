@@ -1,0 +1,5 @@
+/home/twinone/dev/android/projects/AutoPlay/app/build/intermediates/classes/release
+/home/twinone/dev/android/projects/AutoPlay/app/build/intermediates/pre-dexed/release/support-annotations-21.0.3-ff085757e19c46a96e75c2489c657d1b5af0cb45.jar
+/home/twinone/dev/android/projects/AutoPlay/app/build/intermediates/pre-dexed/release/internal_impl-21.0.3-57d8a34619a3b94c3e67aa363bb64f99a43a92a1.jar
+/home/twinone/dev/android/projects/AutoPlay/app/build/intermediates/pre-dexed/release/classes-704b77f7569357067fd1e2e7f1cf15124c72433d.jar
+/home/twinone/dev/android/projects/AutoPlay/app/build/intermediates/pre-dexed/release/classes-bd36320f03de2dd88b62a803d716696dc6f1c6ee.jar

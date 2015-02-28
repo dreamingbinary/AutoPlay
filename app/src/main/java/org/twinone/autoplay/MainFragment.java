@@ -25,7 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Switch;
+import android.widget.Button;
 
 
 /**
@@ -33,7 +33,7 @@ import android.widget.Switch;
  */
 public class MainFragment extends Fragment implements OnClickListener {
 
-	private Switch mSwitch;
+	private Button mToggle;
 
 	public MainFragment() {
 	}
@@ -43,8 +43,8 @@ public class MainFragment extends Fragment implements OnClickListener {
 			Bundle savedInstanceState) {
 		setHasOptionsMenu(true);
 		View root = inflater.inflate(R.layout.fragment_main, container, false);
-		mSwitch = (Switch) root.findViewById(R.id.swToggleService);
-		mSwitch.setOnClickListener(this);
+		mToggle = (Button) root.findViewById(R.id.swToggleService);
+		mToggle.setOnClickListener(this);
 
 		if (!isServiceRunning()) {
 			DialogService.start(getActivity());
@@ -83,11 +83,10 @@ public class MainFragment extends Fragment implements OnClickListener {
 	private void updateLayout() {
 		boolean running = isServiceRunning();
 		if (running) {
-			mSwitch.setText(R.string.stop_service);
+			mToggle.setText(R.string.stop_service);
 		} else {
-			mSwitch.setText(R.string.start_service);
+			mToggle.setText(R.string.start_service);
 		}
-		mSwitch.setChecked(running);
 	}
 
     @Override
